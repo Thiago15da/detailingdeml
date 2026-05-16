@@ -1,110 +1,447 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elite Detailing | Novatec Demo</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <title>Clínica Odontológica Premium</title>
+    <!-- Fuentes de Google: Playfair Display para elegancia, Inter para legibilidad -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['"Exo 2"', 'sans-serif'] },
-                    colors: {
-                        'neon-blue': '#00f3ff',
-                        'carbon': '#111111',
-                        'metal': '#222222'
-                    }
-                }
+    <style>
+        /* --- VARIABLES DE COLOR Y ESTILO --- */
+        :root {
+            --primary-color: #0A192F; /* Azul marino muy oscuro */
+            --secondary-color: #D4AF37; /* Dorado/Champán */
+            --text-dark: #333333;
+            --text-light: #F8F9FA;
+            --bg-light: #FAFAFA;
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* --- RESET Y BASES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+        }
+
+        /* --- NAVEGACIÓN --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: transparent;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        nav.scrolled {
+            background: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 50px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-light);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
+
+        .nav-links li a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(10, 25, 47, 0.7), rgba(10, 25, 47, 0.8)), url('https://images.unsplash.com/photo-1606811841689-23dfddce3e95?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            display: flex;
+            align-items: center;
+            padding: 0 10%;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            color: var(--text-light);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s forwards 0.5s;
+        }
+
+        .hero-content h1 {
+            color: var(--text-light);
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: #CCCCCC;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            border: 1px solid var(--secondary-color);
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--secondary-color);
+        }
+
+        /* --- SERVICIOS --- */
+        .services {
+            padding: 100px 10%;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            color: #666;
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 50px 30px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--secondary-color);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card i {
+            font-size: 40px;
+            color: var(--secondary-color);
+            margin-bottom: 25px;
+        }
+
+        /* --- FOOTER Y CONTACTO --- */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 80px 10% 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-col h3 {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .footer-col p, .footer-col a {
+            color: #AAAAAA;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: var(--transition);
+        }
+
+        .footer-col a:hover {
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: white;
+        }
+
+        .social-links a:hover {
+            background: var(--secondary-color);
+            padding-left: 0;
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        /* --- WHATSAPP FLOTANTE --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            color: white;
+        }
+
+        /* --- ANIMACIONES --- */
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
-    </script>
-    <style>
-        .glow { box-shadow: 0 0 20px rgba(0, 243, 255, 0.3); }
-        .text-glow { text-shadow: 0 0 10px rgba(0, 243, 255, 0.5); }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive básico */
+        @media (max-width: 768px) {
+            .nav-links { display: none; } /* En una web real aquí iría un menú hamburguesa */
+            .hero-content h1 { font-size: 2.5rem; }
+            nav { padding: 20px; }
+        }
     </style>
 </head>
-<body class="bg-black text-white selection:bg-neon-blue selection:text-black">
+<body>
 
-    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/10">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
-            <div class="font-black text-2xl tracking-tighter italic">
-                ELITE <span class="text-neon-blue">DETAILING</span>
-            </div>
-            <a href="https://wa.me/" class="bg-white text-black px-6 py-2 font-bold skew-x-[-10deg] hover:bg-neon-blue transition hover:scale-105">
-                <span class="skew-x-[10deg] inline-block">AGENDAR TURNO</span>
-            </a>
-        </div>
+    <!-- BARRA DE NAVEGACIÓN -->
+    <nav id="navbar">
+        <a href="#" class="logo">DENTAL<span>CLINIC</span></a>
+        <ul class="nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#servicios">Tratamientos</a></li>
+            <!-- Enlace al Blog futuro -->
+            <li><a href="https://link-a-tu-blog.com" target="_blank">Nuestro Blog</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
     </nav>
 
-    <header class="relative h-screen flex items-center justify-center overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover opacity-60">
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+    <!-- SECCIÓN HERO -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>El arte de una sonrisa perfecta</h1>
+            <p>Odontología de alta precisión y estética dental avanzada. Descubra una experiencia de salud bucal diseñada para su comodidad y bienestar.</p>
+            <!-- Enlace de WhatsApp -->
+            <a href="https://wa.me/595900000000?text=Hola,%20quisiera%20agendar%20una%20consulta" class="btn">Agendar Consulta</a>
         </div>
+    </section>
 
-        <div class="relative z-10 text-center px-4 max-w-4xl">
-            <h1 class="text-5xl md:text-8xl font-black mb-6 tracking-tighter uppercase italic text-glow">
-                Brillo <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-blue-600">Extremo.</span>
-            </h1>
-            <p class="text-xl md:text-2xl text-slate-300 mb-10 font-light">
-                Centro especializado en Nano Cerámica y Corrección de Pintura.
-                <br>Devolvele a tu vehículo el aspecto de 0KM.
-            </p>
-            <div class="flex flex-col md:flex-row gap-4 justify-center">
-                <button class="bg-neon-blue text-black px-8 py-4 font-bold text-lg rounded-sm hover:bg-white transition glow">
-                    VER PAQUETES
-                </button>
-                <button class="border border-white/30 px-8 py-4 font-bold text-lg rounded-sm hover:border-neon-blue hover:text-neon-blue transition">
-                    NUESTROS TRABAJOS
-                </button>
+    <!-- SECCIÓN SERVICIOS -->
+    <section class="services" id="servicios">
+        <h2 class="section-title reveal">Nuestras Especialidades</h2>
+        <p class="section-subtitle reveal">Combinamos tecnología de vanguardia con la experiencia de especialistas altamente cualificados.</p>
+        
+        <div class="grid">
+            <div class="service-card reveal">
+                <i class="fa-solid fa-tooth"></i>
+                <h3>Estética Dental</h3>
+                <p>Diseño de sonrisa, carillas de porcelana y blanqueamiento láser para devolverle el brillo a su expresión.</p>
             </div>
-        </div>
-    </header>
-
-    <section class="py-24 bg-carbon border-t border-white/5">
-        <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-4xl font-black mb-12 text-center uppercase italic">Nuestros Servicios</h2>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-metal p-1 group hover:-translate-y-2 transition duration-300">
-                    <div class="bg-black p-8 h-full border border-white/5 group-hover:border-neon-blue/50 transition">
-                        <i data-lucide="shield" class="w-12 h-12 text-neon-blue mb-6"></i>
-                        <h3 class="text-2xl font-bold mb-4 italic">Nano Protección</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-6">Recubrimiento cerámico 9H que protege la pintura contra rayos UV, lluvia ácida y rayones leves por hasta 3 años.</p>
-                        <p class="text-neon-blue font-bold text-xl">Desde Gs. 1.500.000</p>
-                    </div>
-                </div>
-
-                <div class="bg-metal p-1 group hover:-translate-y-2 transition duration-300">
-                    <div class="bg-black p-8 h-full border border-white/5 group-hover:border-neon-blue/50 transition">
-                        <i data-lucide="sparkles" class="w-12 h-12 text-purple-500 mb-6"></i>
-                        <h3 class="text-2xl font-bold mb-4 italic">Corrección de Laca</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-6">Eliminación de "telarañas" (swirls) y hologramas. Pulido técnico en 3 pasos para un acabado espejo perfecto.</p>
-                        <p class="text-purple-500 font-bold text-xl">Desde Gs. 800.000</p>
-                    </div>
-                </div>
-
-                <div class="bg-metal p-1 group hover:-translate-y-2 transition duration-300">
-                    <div class="bg-black p-8 h-full border border-white/5 group-hover:border-neon-blue/50 transition">
-                        <i data-lucide="droplet" class="w-12 h-12 text-blue-500 mb-6"></i>
-                        <h3 class="text-2xl font-bold mb-4 italic">Limpieza Premium</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-6">Desmontaje de butacas, limpieza de techo, alfombras y tratamiento de cueros con productos importados.</p>
-                        <p class="text-blue-500 font-bold text-xl">Desde Gs. 450.000</p>
-                    </div>
-                </div>
+            <div class="service-card reveal">
+                <i class="fa-solid fa-gem"></i>
+                <h3>Implantología</h3>
+                <p>Rehabilitación oral compleja con implantes de titanio de última generación. Soluciones definitivas y naturales.</p>
+            </div>
+            <div class="service-card reveal">
+                <i class="fa-solid fa-face-smile"></i>
+                <h3>Ortodoncia Invisible</h3>
+                <p>Alineación dental discreta mediante alineadores transparentes. Comodidad y estética sin brackets tradicionales.</p>
             </div>
         </div>
     </section>
 
-    <footer class="bg-black py-12 border-t border-white/10 text-center">
-        <p class="text-slate-500 text-sm">Diseñado por <span class="text-white font-bold">NOVATEC</span> para líderes del sector automotriz.</p>
+    <!-- FOOTER Y CONTACTO -->
+    <footer id="contacto">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>DENTAL<span>CLINIC</span></h3>
+                <p>Odontología de excelencia. Cuidamos de su salud dental con un enfoque integral y personalizado.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Enlaces Rápidos</h3>
+                <a href="#inicio">Inicio</a>
+                <a href="#servicios">Tratamientos Especializados</a>
+                <!-- Link al blog -->
+                <a href="https://link-a-tu-blog.com" target="_blank">Leer nuestro Blog</a>
+            </div>
+            <div class="footer-col">
+                <h3>Contacto</h3>
+                <p><i class="fa-solid fa-location-dot"></i> Av. Principal, Mariano Roque Alonso</p>
+                <p><i class="fa-solid fa-phone"></i> +595 900 000 000</p>
+                <p><i class="fa-solid fa-envelope"></i> consultas@dentalclinic.com</p>
+                <p><i class="fa-solid fa-clock"></i> Lun - Vie: 08:00 - 18:00</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2026 Dental Clinic. Todos los derechos reservados. | Diseñado por Novatec</p>
+        </div>
     </footer>
 
-    <script>lucide.createIcons();</script>
+    <!-- BOTÓN WHATSAPP FLOTANTE -->
+    <a href="https://wa.me/595900000000?text=Hola,%20me%20gustaría%20recibir%20más%20información" class="whatsapp-float" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- JAVASCRIPT DIRECTO PARA INTERACTIVIDAD -->
+    <script>
+        // Efecto del Navbar al hacer Scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Animación de revelado al hacer scroll (Intersection Observer)
+        const reveals = document.querySelectorAll('.reveal');
+        
+        const revealOptions = {
+            threshold: 0.15, // Se activa cuando el 15% del elemento es visible
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                } else {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); // Deja de observar una vez animado
+                }
+            });
+        }, revealOptions);
+
+        reveals.forEach(reveal => {
+            revealOnScroll.observe(reveal);
+        });
+    </script>
 </body>
 </html>
