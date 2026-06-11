@@ -1,658 +1,975 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clínica Odontológica Premium</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        /* --- VARIABLES --- */
-        :root {
-            --primary-color: #0A192F; 
-            --secondary-color: #D4AF37; 
-            --text-dark: #333333;
-            --text-light: #F8F9FA;
-            --bg-light: #FAFAFA;
-            --bg-alt: #F0F4F8; /* Gris azulado muy claro para alternar secciones */
-            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JOB DetailStudio — Estética Automotriz Premium | Lambaré, Paraguay</title>
+  <meta name="description" content="Especialistas en Nano Cerámico, Corrección de Pintura y Detailing Premium en Lambaré, Paraguay. Resultados de nivel competición para tu vehículo.">
+  <meta property="og:title" content="JOB DetailStudio — Estética Automotriz Premium">
+  <meta property="og:description" content="Protección de vanguardia para tu vehículo en Lambaré, Paraguay.">
+  <meta property="og:type" content="website">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            jet: '#09090b',
+            cobalt: '#1e40af',
+            'cobalt-light': '#3b82f6',
+            'cobalt-dark': '#1e3a8a',
+          },
+          fontFamily: {
+            bebas: ['"Bebas Neue"', 'cursive'],
+            rajdhani: ['Rajdhani', 'sans-serif'],
+          }
         }
+      }
+    }
+  </script>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: #09090b; color: #fff; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--text-dark);
-            background-color: var(--bg-light);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #09090b; }
+    ::-webkit-scrollbar-thumb { background: #1e40af; border-radius: 3px; }
 
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
-            color: var(--primary-color);
-        }
+    .gradient-text {
+      background: linear-gradient(135deg, #fff 0%, #93c5fd 55%, #60a5fa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
 
-        /* --- NAVEGACIÓN --- */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 20px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: transparent;
-            z-index: 1000;
-            transition: var(--transition);
-        }
+    .glass {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+    .glass-blue {
+      background: rgba(30,64,175,0.1);
+      border: 1px solid rgba(30,64,175,0.3);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
 
-        nav.scrolled {
-            background: rgba(10, 25, 47, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 15px 50px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
+    .nav-wrap {
+      background: rgba(9,9,11,0.88);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .nav-link {
+      position: relative;
+      color: rgba(255,255,255,0.6);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: color 0.25s;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      width: 0; height: 2px;
+      background: #3b82f6;
+      transition: width 0.3s;
+    }
+    .nav-link:hover { color: #fff; }
+    .nav-link:hover::after { width: 100%; }
 
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--text-light);
-            text-decoration: none;
-            letter-spacing: 1px;
-        }
+    .grid-bg {
+      background-image:
+        linear-gradient(rgba(30,64,175,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(30,64,175,0.05) 1px, transparent 1px);
+      background-size: 64px 64px;
+    }
 
-        .logo span { color: var(--secondary-color); }
+    .hr-blue { height: 1px; background: linear-gradient(90deg, transparent, #1e40af 40%, #1e40af 60%, transparent); }
 
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 30px;
-        }
+    .card-glow {
+      background: #0d0d10;
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 1rem;
+      transition: transform 0.35s cubic-bezier(.25,.46,.45,.94), box-shadow 0.35s, border-color 0.35s;
+      position: relative;
+      overflow: hidden;
+    }
+    .card-glow::before {
+      content: '';
+      position: absolute;
+      top: -120%; left: -60%;
+      width: 50%; height: 300%;
+      background: linear-gradient(to bottom right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.04) 50%, rgba(255,255,255,0) 100%);
+      transform: rotate(-30deg);
+      transition: top 0.6s ease, left 0.6s ease;
+    }
+    .card-glow:hover::before { top: 120%; left: 110%; }
+    .card-glow:hover {
+      transform: translateY(-6px);
+      border-color: rgba(30,64,175,0.55);
+      box-shadow: 0 0 36px rgba(30,64,175,0.28), 0 0 72px rgba(30,64,175,0.08), inset 0 1px 0 rgba(255,255,255,0.07);
+    }
 
-        .nav-links li a {
-            color: var(--text-light);
-            text-decoration: none;
-            font-weight: 400;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: var(--transition);
-        }
+    .icon-glow { filter: drop-shadow(0 0 7px rgba(59,130,246,0.75)); }
 
-        .nav-links li a:hover { color: var(--secondary-color); }
+    .reveal        { opacity: 0; transform: translateY(36px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .reveal-l      { opacity: 0; transform: translateX(-36px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .reveal-r      { opacity: 0; transform: translateX(36px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .reveal.on, .reveal-l.on, .reveal-r.on { opacity: 1; transform: none; }
 
-        /* --- HERO --- */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(10, 25, 47, 0.7), rgba(10, 25, 47, 0.8)), url('https://images.unsplash.com/photo-1606811841689-23dfddce3e95?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
-            display: flex;
-            align-items: center;
-            padding: 0 10%;
-        }
+    @keyframes pulse-cta {
+      0%,100% { box-shadow: 0 0 0 0 rgba(30,64,175,.65); }
+      50%      { box-shadow: 0 0 0 14px rgba(30,64,175,0); }
+    }
+    .btn-pulse { animation: pulse-cta 2.4s ease infinite; }
 
-        .hero-content {
-            max-width: 650px;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeUp 1s forwards 0.5s;
-        }
+    @keyframes float-y {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-9px); }
+    }
+    .float-anim { animation: float-y 4s ease-in-out infinite; }
 
-        .hero-content h1 {
-            color: var(--text-light);
-            font-size: 4rem;
-            line-height: 1.1;
-            margin-bottom: 20px;
-        }
+    @keyframes wa-pulse {
+      0%,100% { box-shadow: 0 0 0 0 rgba(37,211,102,.6); }
+      50%      { box-shadow: 0 0 0 12px rgba(37,211,102,0); }
+    }
+    .wa-glow { animation: wa-pulse 2.2s ease infinite; }
 
-        .hero-content p {
-            font-size: 1.2rem;
-            margin-bottom: 40px;
-            color: #E0E0E0;
-        }
+    #mobile-menu { display: none; }
+    #mobile-menu.open { display: flex; }
 
-        .btn {
-            display: inline-block;
-            padding: 15px 35px;
-            background-color: var(--secondary-color);
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 600;
-            border-radius: 4px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: var(--transition);
-            border: 1px solid var(--secondary-color);
-        }
+    /* ─── Comparison Slider ─── */
+    #cmp-wrap {
+      position: relative;
+      overflow: hidden;
+      cursor: col-resize;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: pan-y;
+      border-radius: 1.25rem;
+    }
+    #cmp-after {
+      display: block;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+    }
+    #cmp-before-clip {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      clip-path: inset(0 50% 0 0);
+      pointer-events: none;
+    }
+    #cmp-before {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    #cmp-scratch {
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(108deg, transparent, transparent 2px, rgba(255,255,255,0.025) 2px, rgba(255,255,255,0.025) 3px),
+        repeating-linear-gradient(82deg,  transparent, transparent 5px, rgba(255,255,255,0.015) 5px, rgba(255,255,255,0.015) 6px);
+      pointer-events: none;
+    }
+    #cmp-line {
+      position: absolute;
+      top: 0; left: 50%;
+      width: 3px; height: 100%;
+      transform: translateX(-50%);
+      background: linear-gradient(180deg, transparent 0%, #3b82f6 15%, #fff 50%, #3b82f6 85%, transparent 100%);
+      z-index: 10;
+      pointer-events: none;
+    }
+    #cmp-handle {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+      border: 3px solid #fff;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 20;
+      box-shadow: 0 0 22px rgba(30,64,175,.8), 0 4px 20px rgba(0,0,0,.5);
+      cursor: col-resize;
+    }
+    .cmp-label {
+      position: absolute;
+      top: 50%; transform: translateY(-50%);
+      background: rgba(9,9,11,.82);
+      border: 1px solid rgba(255,255,255,.18);
+      color: #fff;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 2.5px;
+      padding: 5px 11px;
+      border-radius: 4px;
+      pointer-events: none;
+      backdrop-filter: blur(8px);
+      z-index: 15;
+      transition: opacity 0.2s;
+    }
+    #lbl-before { left: 16px; }
+    #lbl-after  { right: 16px; }
 
-        .btn:hover {
-            background-color: transparent;
-            color: var(--secondary-color);
-        }
-
-        /* --- CLASES GENERALES SECCIONES --- */
-        .section-padding { padding: 100px 10%; }
-        .text-center { text-align: center; }
-        
-        .section-title {
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-        }
-
-        .section-subtitle {
-            color: #666;
-            margin-bottom: 60px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            font-size: 1.1rem;
-        }
-
-        /* --- NOSOTROS (LA CLÍNICA) --- */
-        .about { background-color: var(--bg-alt); }
-        
-        .about-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .about-image {
-            position: relative;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: var(--transition);
-        }
-
-        .about-image:hover img { transform: scale(1.05); }
-
-        .about-text h2 {
-            font-size: 2.5rem;
-            margin-bottom: 25px;
-        }
-
-        .about-text p {
-            margin-bottom: 20px;
-            color: #555;
-            font-size: 1.1rem;
-        }
-
-        .features-list {
-            list-style: none;
-            margin-top: 30px;
-        }
-
-        .features-list li {
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            font-weight: 600;
-            color: var(--primary-color);
-        }
-
-        .features-list i {
-            color: var(--secondary-color);
-            font-size: 1.2rem;
-            margin-right: 15px;
-        }
-
-        /* --- SERVICIOS --- */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
-
-        .service-card {
-            background: white;
-            padding: 50px 30px;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            text-align: center;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--secondary-color);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: var(--transition);
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-
-        .service-card:hover::before { transform: scaleX(1); }
-
-        .service-card i {
-            font-size: 45px;
-            color: var(--secondary-color);
-            margin-bottom: 25px;
-        }
-
-        /* --- TESTIMONIOS --- */
-        .testimonials { background-color: var(--bg-alt); }
-
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .testimonial-card {
-            background: white;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.03);
-            position: relative;
-        }
-
-        .stars {
-            color: var(--secondary-color);
-            margin-bottom: 20px;
-            font-size: 1.2rem;
-        }
-
-        .testimonial-text {
-            font-style: italic;
-            color: #555;
-            margin-bottom: 20px;
-        }
-
-        .patient-name {
-            font-weight: 600;
-            color: var(--primary-color);
-            border-top: 1px solid #EEE;
-            padding-top: 20px;
-        }
-
-        /* --- UBICACIÓN Y MAPA --- */
-        .location-container {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 50px;
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
-        }
-
-        .location-info {
-            padding: 50px 40px;
-            background: var(--primary-color);
-            color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .location-info h3 {
-            color: var(--secondary-color);
-            margin-bottom: 30px;
-            font-size: 2rem;
-        }
-
-        .info-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 25px;
-        }
-
-        .info-item i {
-            color: var(--secondary-color);
-            font-size: 1.5rem;
-            margin-right: 15px;
-            margin-top: 5px;
-        }
-
-        .info-item p { color: #DDD; }
-        .info-item strong { color: white; display: block; margin-bottom: 5px; }
-
-        .map-iframe {
-            width: 100%;
-            height: 100%;
-            min-height: 400px;
-            border: none;
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            background-color: #050d1a; /* Más oscuro que el primary */
-            color: var(--text-light);
-            padding: 80px 10% 30px;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 50px;
-        }
-
-        .footer-col h3 {
-            color: var(--secondary-color);
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-        }
-
-        .footer-col p, .footer-col a {
-            color: #AAAAAA;
-            text-decoration: none;
-            display: block;
-            margin-bottom: 10px;
-            transition: var(--transition);
-        }
-
-        .footer-col a:hover {
-            color: var(--secondary-color);
-            padding-left: 5px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-links a {
-            display: inline-flex;
-            width: 40px;
-            height: 40px;
-            background: rgba(255,255,255,0.1);
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            color: white;
-        }
-
-        .social-links a:hover {
-            background: var(--secondary-color);
-            color: var(--primary-color);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            color: #555;
-            font-size: 0.9rem;
-        }
-
-        /* --- WHATSAPP --- */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 40px;
-            right: 40px;
-            background-color: #25d366;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-            z-index: 1000;
-            transition: var(--transition);
-            text-decoration: none;
-        }
-
-        .whatsapp-float:hover { transform: scale(1.1); color: white; }
-
-        /* --- ANIMACIONES --- */
-        @keyframes fadeUp {
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease-out;
-        }
-
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
-        /* RESPONSIVE */
-        @media (max-width: 900px) {
-            .about-container, .location-container { grid-template-columns: 1fr; }
-            .hero-content h1 { font-size: 2.8rem; }
-            .nav-links { display: none; }
-            nav { padding: 20px; background: rgba(10, 25, 47, 0.95); }
-        }
-    </style>
+    .phase-card {
+      border-left: 3px solid transparent;
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .phase-card:hover {
+      border-left-color: #1e40af;
+      background: rgba(30,64,175,0.07);
+    }
+  </style>
 </head>
-<body>
+<body class="bg-jet text-white">
 
-    <!-- NAVEGACIÓN -->
-    <nav id="navbar">
-        <a href="#" class="logo">DENTAL<span>CLINIC</span></a>
-        <ul class="nav-links">
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#nosotros">La Clínica</a></li>
-            <li><a href="#servicios">Tratamientos</a></li>
-            <li><a href="https://link-a-tu-blog.com" target="_blank">Blog</a></li>
-            <li><a href="#ubicacion">Ubicación</a></li>
-        </ul>
-    </nav>
+  <!-- ══════════════════════════════════════════════════════════
+       NAVIGATION
+  ══════════════════════════════════════════════════════════ -->
+  <nav id="navbar" class="nav-wrap fixed top-0 inset-x-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 md:h-20">
 
-    <!-- HERO -->
-    <section class="hero" id="inicio">
-        <div class="hero-content">
-            <h1>Arte, Precisión y Estética Dental</h1>
-            <p>Transformamos sonrisas con tecnología de vanguardia y un enfoque exclusivo para cada paciente en el corazón de Asunción.</p>
-            <a href="https://wa.me/595900000000?text=Hola,%20quisiera%20agendar%20una%20consulta" class="btn" target="_blank">Agendar Evaluación</a>
-        </div>
-    </section>
+        <a href="#inicio" class="flex items-center gap-3 flex-shrink-0">
+          <div class="relative">
+            <img src="logo.jpeg" alt="JOB DetailStudio" class="h-10 w-10 md:h-12 md:w-12 rounded-full object-contain border border-blue-800/40">
+            <span class="absolute inset-0 rounded-full border border-blue-500/20 animate-ping" style="animation-duration:3s;"></span>
+          </div>
+          <div>
+            <div class="font-bebas text-xl md:text-2xl tracking-widest leading-none">JOB DetailStudio</div>
+            <div class="text-[9px] text-blue-400/70 tracking-[3px] uppercase leading-none mt-0.5">Lambaré · Paraguay</div>
+          </div>
+        </a>
 
-    <!-- NOSOTROS -->
-    <section class="about section-padding" id="nosotros">
-        <div class="about-container">
-            <div class="about-image reveal">
-                <!-- Imagen de consultorio de stock de alta calidad -->
-                <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Consultorio Odontológico Moderno">
-            </div>
-            <div class="about-text reveal">
-                <h2>Excelencia y Calidez Humana</h2>
-                <p>En Dental Clinic no solo tratamos dientes, cuidamos personas. Nuestras instalaciones están diseñadas para ofrecer un ambiente de relajación y exclusividad, alejándonos del concepto tradicional de clínica dental.</p>
-                <p>Contamos con un equipo de especialistas en constante formación internacional para brindarle los tratamientos más avanzados y menos invasivos.</p>
-                
-                <ul class="features-list">
-                    <li><i class="fa-solid fa-check-circle"></i> Tecnología 3D y escáner intraoral</li>
-                    <li><i class="fa-solid fa-check-circle"></i> Protocolos indoloros de última generación</li>
-                    <li><i class="fa-solid fa-check-circle"></i> Materiales biocompatibles importados</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- SERVICIOS -->
-    <section class="services section-padding" id="servicios">
-        <div class="text-center">
-            <h2 class="section-title reveal">Nuestras Especialidades</h2>
-            <p class="section-subtitle reveal">Abordamos la salud bucal desde una perspectiva integral, combinando ciencia médica con el más alto nivel estético.</p>
-        </div>
-        
-        <div class="grid">
-            <div class="service-card reveal">
-                <i class="fa-solid fa-tooth"></i>
-                <h3>Diseño de Sonrisa</h3>
-                <p>Carillas de porcelana ultrafinas y blanqueamiento láser para lograr una estética perfecta y natural, en armonía con su rostro.</p>
-            </div>
-            <div class="service-card reveal">
-                <i class="fa-solid fa-gem"></i>
-                <h3>Implantología Avanzada</h3>
-                <p>Rehabilitación oral con implantes de titanio. Cirugías guiadas por ordenador para máxima precisión y rápida recuperación.</p>
-            </div>
-            <div class="service-card reveal">
-                <i class="fa-solid fa-face-smile"></i>
-                <h3>Ortodoncia Invisible</h3>
-                <p>Alineadores transparentes hechos a medida. Corrija la posición de sus dientes de manera discreta y sin alterar su estilo de vida.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- TESTIMONIOS -->
-    <section class="testimonials section-padding" id="testimonios">
-        <div class="text-center">
-            <h2 class="section-title reveal">Lo que dicen nuestros pacientes</h2>
-            <p class="section-subtitle reveal">La confianza y satisfacción de quienes nos eligen es nuestro mayor respaldo.</p>
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#inicio"      class="nav-link">Inicio</a>
+          <a href="#servicios"   class="nav-link">Servicios</a>
+          <a href="#comparacion" class="nav-link">Resultados</a>
+          <a href="#metodologia" class="nav-link">Método</a>
+          <a href="#contacto"    class="nav-link">Contacto</a>
         </div>
 
-        <div class="testimonial-grid">
-            <div class="testimonial-card reveal">
-                <div class="stars">
-                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        <a href="https://wa.me/595971000000" target="_blank" rel="noopener"
+           class="hidden md:inline-flex items-center gap-2 bg-cobalt hover:bg-cobalt-light text-white text-[11px] font-semibold tracking-[2px] uppercase px-5 py-2.5 rounded-full transition-all duration-300 border border-blue-700/50 hover:border-blue-500/70">
+          <i class="fas fa-calendar-check text-xs"></i> Agendar Turno
+        </a>
+
+        <button id="menu-btn" class="md:hidden text-white p-2 -mr-1" aria-label="Menú">
+          <i id="menu-icon" class="fas fa-bars text-xl"></i>
+        </button>
+      </div>
+
+      <div id="mobile-menu" class="md:hidden flex-col gap-4 pb-6 border-t border-white/5 pt-5">
+        <a href="#inicio"      class="nav-link block py-1.5">Inicio</a>
+        <a href="#servicios"   class="nav-link block py-1.5">Servicios</a>
+        <a href="#comparacion" class="nav-link block py-1.5">Resultados</a>
+        <a href="#metodologia" class="nav-link block py-1.5">Método</a>
+        <a href="#contacto"    class="nav-link block py-1.5">Contacto</a>
+        <a href="https://wa.me/595971000000" target="_blank" rel="noopener"
+           class="mt-2 inline-flex items-center gap-2 bg-cobalt text-white text-[11px] font-semibold tracking-[2px] uppercase px-5 py-2.5 rounded-full">
+          <i class="fab fa-whatsapp"></i> Agendar Turno
+        </a>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════════════════════ -->
+  <section id="inicio" class="relative min-h-screen flex items-center overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1920&q=80&fit=crop"
+           alt="Auto de lujo" class="w-full h-full object-cover" loading="eager">
+      <div class="absolute inset-0" style="background:linear-gradient(120deg,rgba(0,0,0,.96) 0%,rgba(9,9,11,.88) 45%,rgba(0,0,0,.65) 100%);"></div>
+      <div class="absolute inset-0" style="background:radial-gradient(ellipse at 25% 60%,rgba(30,64,175,.14) 0%,transparent 55%);"></div>
+    </div>
+    <div class="absolute inset-0 z-0 grid-bg opacity-35"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-24 w-full">
+      <div class="max-w-4xl">
+
+        <div class="glass-blue inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8 reveal">
+          <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
+          <span class="text-[10px] font-semibold text-blue-300 tracking-[3px] uppercase">Estética Automotriz Premium · Lambaré, PY</span>
+        </div>
+
+        <h1>
+          <span class="reveal block font-bebas leading-none tracking-wider gradient-text" style="font-size:clamp(3.2rem,10vw,7.5rem);transition-delay:.1s">ESTÉTICA,</span>
+          <span class="reveal block font-bebas leading-none tracking-wider text-white"     style="font-size:clamp(3.2rem,10vw,7.5rem);transition-delay:.2s">CORRECCIÓN</span>
+          <span class="reveal block font-bebas leading-none tracking-wider text-white/20"  style="font-size:clamp(3.2rem,10vw,7.5rem);transition-delay:.3s">Y PROTECCIÓN</span>
+        </h1>
+
+        <p class="reveal mt-6 text-lg md:text-xl text-white/55 font-light max-w-2xl leading-relaxed" style="transition-delay:.42s">
+          Estética, Corrección y Protección de Vanguardia para tu Vehículo.<br>
+          <span class="text-blue-400">Tecnología nano cerámica</span> y corrección de pintura de precisión para resultados de nivel competición.
+        </p>
+
+        <div class="reveal flex flex-col sm:flex-row gap-4 mt-10" style="transition-delay:.55s">
+          <a href="https://wa.me/595971000000?text=Hola%20JOB%20DetailStudio!%20Quisiera%20consultar%20y%20agendar%20un%20turno."
+             target="_blank" rel="noopener"
+             class="btn-pulse inline-flex items-center justify-center gap-3 bg-cobalt hover:bg-cobalt-light text-white font-semibold tracking-widest uppercase text-sm px-8 py-4 rounded-full transition-all duration-300 border border-blue-600/70">
+            <i class="fab fa-whatsapp text-lg"></i> Reservar Turno
+          </a>
+          <a href="#servicios"
+             class="inline-flex items-center justify-center gap-3 glass text-white/75 hover:text-white font-medium tracking-wider uppercase text-sm px-8 py-4 rounded-full transition-all duration-300">
+            <i class="fas fa-play text-xs"></i> Ver Servicios
+          </a>
+        </div>
+
+        <div class="reveal grid grid-cols-3 gap-6 mt-16 max-w-xs" style="transition-delay:.68s">
+          <div class="text-center">
+            <div class="font-bebas text-5xl text-white tracking-wider">5+</div>
+            <div class="text-[10px] text-white/35 tracking-widest uppercase mt-1 leading-tight">Años de<br>Experiencia</div>
+          </div>
+          <div class="text-center border-x border-white/10 px-3">
+            <div class="font-bebas text-5xl text-blue-400 tracking-wider">500+</div>
+            <div class="text-[10px] text-white/35 tracking-widest uppercase mt-1 leading-tight">Vehículos<br>Tratados</div>
+          </div>
+          <div class="text-center">
+            <div class="font-bebas text-5xl text-white tracking-wider">2Y</div>
+            <div class="text-[10px] text-white/35 tracking-widest uppercase mt-1 leading-tight">Garantía<br>Cerámica</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 float-anim pointer-events-none">
+      <span class="text-white/25 text-[10px] tracking-[4px] uppercase">Scroll</span>
+      <div class="w-px h-10 bg-gradient-to-b from-blue-500 to-transparent"></div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       BEFORE / AFTER SLIDER
+  ══════════════════════════════════════════════════════════ -->
+  <div class="hr-blue"></div>
+  <section id="comparacion" class="py-24 relative overflow-hidden">
+    <div class="absolute inset-0 grid-bg opacity-20"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-16">
+        <div class="glass-blue inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 reveal">
+          <i class="fas fa-eye text-blue-400 text-xs"></i>
+          <span class="text-[10px] font-semibold text-blue-300 tracking-[3px] uppercase">Resultados Reales</span>
+        </div>
+        <h2 class="reveal font-bebas tracking-wider" style="font-size:clamp(2.6rem,8vw,5.5rem);transition-delay:.1s">
+          <span class="gradient-text">ANTES</span> <span class="text-white/30">&amp;</span> <span class="text-white">DESPUÉS</span>
+        </h2>
+        <p class="reveal text-white/45 mt-4 text-base md:text-lg max-w-lg mx-auto" style="transition-delay:.2s">
+          Arrastrá el control deslizante para ver la transformación real de una corrección de pintura profesional.
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto reveal" style="transition-delay:.3s">
+        <div id="cmp-wrap" style="height:clamp(260px,52vw,500px);">
+
+          <img id="cmp-after"
+               src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200&q=85&fit=crop"
+               alt="Acabado espejo profesional"
+               style="filter:saturate(1.25) contrast(1.1) brightness(1.08);"
+               draggable="false">
+
+          <div id="cmp-before-clip">
+            <img id="cmp-before"
+                 src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200&q=85&fit=crop"
+                 alt="Pintura con rayones"
+                 style="filter:grayscale(.65) contrast(.7) brightness(.6) saturate(.35);"
+                 draggable="false">
+            <div id="cmp-scratch"></div>
+          </div>
+
+          <div id="cmp-line"></div>
+
+          <div id="cmp-handle">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M8 4L4 12L8 20M16 4L20 12L16 20" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+
+          <div id="lbl-before" class="cmp-label">ANTES</div>
+          <div id="lbl-after"  class="cmp-label">DESPUÉS</div>
+        </div>
+
+        <p class="text-center text-white/30 text-sm mt-4 tracking-wide">
+          <i class="fas fa-arrows-left-right text-blue-500 mr-2"></i>Arrastrá para comparar
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       SERVICES
+  ══════════════════════════════════════════════════════════ -->
+  <div class="hr-blue opacity-40"></div>
+  <section id="servicios" class="py-24 relative">
+    <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse at 50% 50%,rgba(30,64,175,.055) 0%,transparent 65%);"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-16">
+        <div class="glass-blue inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 reveal">
+          <i class="fas fa-car text-blue-400 text-xs"></i>
+          <span class="text-[10px] font-semibold text-blue-300 tracking-[3px] uppercase">Servicios Avanzados</span>
+        </div>
+        <h2 class="reveal font-bebas tracking-wider" style="font-size:clamp(2.6rem,8vw,5.5rem);transition-delay:.1s">
+          PROTECCIÓN <span class="gradient-text">DE VANGUARDIA</span>
+        </h2>
+        <p class="reveal text-white/45 mt-4 text-lg max-w-xl mx-auto" style="transition-delay:.2s">
+          Cada servicio diseñado para elevar tu vehículo al máximo nivel de perfección estética.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <!-- Nano Cerámico -->
+        <div class="card-glow p-8 flex flex-col reveal" style="transition-delay:.1s">
+          <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-5 flex-shrink-0" style="background:rgba(30,64,175,.14);border:1px solid rgba(30,64,175,.32);">
+            <i class="fas fa-shield-halved text-2xl text-blue-400 icon-glow"></i>
+          </div>
+          <div class="text-[9px] text-blue-500 tracking-[3px] uppercase mb-1 font-semibold">Protección Total</div>
+          <h3 class="font-bebas text-2xl tracking-wider text-white mb-4">NANO CERÁMICO</h3>
+          <p class="text-white/45 text-sm leading-relaxed flex-grow">
+            Capa de SiO₂ grado industrial. Dureza 9H, hidrofobicidad extrema y protección UV. Brillo espejo permanente hasta 5 años.
+          </p>
+          <ul class="mt-5 space-y-1.5">
+            <li class="flex items-center gap-2 text-xs text-white/35"><i class="fas fa-check text-blue-500 text-[10px]"></i>Dureza 9H certificada</li>
+            <li class="flex items-center gap-2 text-xs text-white/35"><i class="fas fa-check text-blue-500 text-[10px]"></i>Garantía hasta 5 años</li>
+            <li class="flex items-center gap-2 text-xs text-white/35"><i class="fas fa-check text-blue-500 text-[10px]"></i>Anti-UV y anti-rayones</li>
+          </ul>
+          <a href="https://wa.me/595971000000?text=Hola!%20Quiero%20reservar%20un%20Nano%20Cer%C3%A1mico."
+             target="_blank" rel="noopener"
+             class="mt-6 flex items-center justify-center gap-2 bg-cobalt hover:bg-cobalt-light text-white text-[11px] font-semibold tracking-[2px] uppercase px-4 py-3 rounded-xl transition-all duration-300">
+            <i class="fab fa-whatsapp text-sm"></i> Reservar Turno
+          </a>
+        </div>
+
+        <!-- Lavado Premium -->
+        <div class="card-glow p-8 flex flex-col reveal" style="transition-delay:.2s">
+          <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-5 flex-shrink-0" style="background:rgba(30,64,175,.14);border:1px solid rgba(30,64,175,.32);">
+            <i class="fas fa-droplet text-2xl text-blue-400 icon-glow"></i>
+          </div>
+          <div class="text-[9px] text-blue-500 tracking-[3px] uppercase mb-1 font-semibold">Deep Clean</div>
+          <h3 class="font-bebas text-2xl tracking-wider text-white mb-4">LAVADO PREMIUM</h3>
+          <p class="text-white/45 text-sm leading-relaxed flex-grow">
+            Lavado sin contacto con descontaminación ferrosa, arcilla química y sellado hidrofóbico de última generación.
+          </p>
+          <ul class="mt-5 space-y-1.5">
+            <li class="flex items-center gap-2 text-xs text-white/35"><i class="fas fa-check text-blue-500 text-[10px]"></i>Lavado sin contacto</li>
+            <li class="flex items-center gap-2 text-xs text-white/35"><i class="fas fa-check text-blue-500 text-[10px]"></i>Descontaminación ferrosa</li>
+            <li class="flex items-center gap-2 text-xs text-white/35"><i class="fas fa-check text-blue-500 text-[10px]"></i>Sellado hidrofóbico</li>
+          </ul>
+          <a href="https://wa.me/595971000000?text=Hola!%20Quiero%20reservar%20un%20Lavado%20Premium."
+             target="_blank" rel="noopener"
+             class="mt-6 flex items-center justify-center gap-2 bg-cobalt hover:bg-cobalt-light text-white text-[11px] font-semibold tracking-[2px] uppercase px-4 py-3 rounded-xl transition-all duration-300">
+            <i class="fab fa-whatsapp text-sm"></i> Reservar Turno
+          </a>
+        </div>
+
+        <!-- Corrección de Pintura -->
+        <div class="card-glow p-8 flex flex-col reveal" style="transition-delay:.3s">
+          <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-5 flex-shrink-0" style="background:rgba(30,64,175,.14);border:1px solid rgba(30,64,175,.32);">
+            <i class="fas fa-wand-magic-sparkles text-2xl text-blue-400 icon-glow"></i>
+          </div>
+          <div class="text-[9px] text-blue-500 tracking-[3px] uppercase mb-1 font-semibold">Paint Correction</div>
+          <h3 class="font-bebas text-2xl tracking-wider text-white mb-4">CORRECCIÓN DE PINTURA</h3>
+          <p class="text-white/45 text-sm leading-relaxed flex-grow">
+            Eliminación de hologramas, swirls y rayones mediante corrección multietapa con máquinas y abrasivos de precisión.
+          </p>
+          <ul class="mt-5 space-y-1.5">
+            <li class="flex items-center gap-2 text-xs text-white/35"><i class="fas fa-check text-blue-500 text-[10px]"></i>Hasta 3 etapas de corrección</li>
+            <li class="flex items-center gap-2 text-xs text-white/35"><i class="fas fa-check text-blue-500 text-[10px]"></i>Eliminación de swirls</li>
+            <li class="flex items-center gap-2 text-xs text-white/35"><i class="fas fa-check text-blue-500 text-[10px]"></i>Acabado espejo</li>
+          </ul>
+          <a href="https://wa.me/595971000000?text=Hola!%20Quiero%20reservar%20una%20Correcci%C3%B3n%20de%20Pintura."
+             target="_blank" rel="noopener"
+             class="mt-6 flex items-center justify-center gap-2 bg-cobalt hover:bg-cobalt-light text-white text-[11px] font-semibold tracking-[2px] uppercase px-4 py-3 rounded-xl transition-all duration-300">
+            <i class="fab fa-whatsapp text-sm"></i> Reservar Turno
+          </a>
+        </div>
+
+        <!-- Detailing Interior -->
+        <div class="card-glow p-8 flex flex-col reveal" style="transition-delay:.4s">
+          <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-5 flex-shrink-0" style="background:rgba(30,64,175,.14);border:1px solid rgba(30,64,175,.32);">
+            <i class="fas fa-couch text-2xl text-blue-400 icon-glow"></i>
+          </div>
+          <div class="text-[9px] text-blue-500 tracking-[3px] uppercase mb-1 font-semibold">Interior Detail</div>
+          <h3 class="font-bebas text-2xl tracking-wider text-white mb-4">DETAILING DE INTERIOR</h3>
+          <p class="text-white/45 text-sm leading-relaxed flex-grow">
+            Restauración completa del habitáculo. Cueros, plásticos, vidrios y tratamiento anti-UV para tableros y tapizados.
+          </p>
+          <ul class="mt-5 space-y-1.5">
+            <li class="flex items-center gap-2 text-xs text-white/35"><i class="fas fa-check text-blue-500 text-[10px]"></i>Limpieza profunda</li>
+            <li class="flex items-center gap-2 text-xs text-white/35"><i class="fas fa-check text-blue-500 text-[10px]"></i>Protección de cueros</li>
+            <li class="flex items-center gap-2 text-xs text-white/35"><i class="fas fa-check text-blue-500 text-[10px]"></i>Anti-UV tableros</li>
+          </ul>
+          <a href="https://wa.me/595971000000?text=Hola!%20Quiero%20reservar%20un%20Detailing%20de%20Interior."
+             target="_blank" rel="noopener"
+             class="mt-6 flex items-center justify-center gap-2 bg-cobalt hover:bg-cobalt-light text-white text-[11px] font-semibold tracking-[2px] uppercase px-4 py-3 rounded-xl transition-all duration-300">
+            <i class="fab fa-whatsapp text-sm"></i> Reservar Turno
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       METHODOLOGY
+  ══════════════════════════════════════════════════════════ -->
+  <div class="hr-blue opacity-30"></div>
+  <section id="metodologia" class="py-24 relative overflow-hidden">
+    <div class="absolute inset-0 grid-bg opacity-20"></div>
+    <div class="absolute left-0 top-0 w-1/2 h-full pointer-events-none" style="background:radial-gradient(ellipse at 0% 50%,rgba(30,64,175,.08) 0%,transparent 55%);"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-20">
+        <div class="glass-blue inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 reveal">
+          <i class="fas fa-microscope text-blue-400 text-xs"></i>
+          <span class="text-[10px] font-semibold text-blue-300 tracking-[3px] uppercase">Rigor y Precisión</span>
+        </div>
+        <h2 class="reveal font-bebas tracking-wider" style="font-size:clamp(2.6rem,8vw,5.5rem);transition-delay:.1s">
+          METODOLOGÍA <span class="gradient-text">DE TRABAJO</span>
+        </h2>
+        <p class="reveal text-white/45 mt-4 text-lg max-w-xl mx-auto" style="transition-delay:.2s">
+          Cada vehículo pasa por un proceso de 5 fases que garantiza resultados impecables y duraderos.
+        </p>
+      </div>
+
+      <!-- Desktop timeline -->
+      <div class="hidden lg:flex items-start relative">
+        <div class="absolute top-8 left-[4.5%] right-[4.5%] h-px z-0" style="background:linear-gradient(90deg,transparent,rgba(30,64,175,.5) 15%,rgba(30,64,175,.5) 85%,transparent);"></div>
+
+        <div class="flex-1 flex flex-col items-center text-center px-3 relative z-10 reveal" style="transition-delay:.1s">
+          <div class="w-16 h-16 rounded-full flex items-center justify-center mb-6 bg-cobalt-dark border-2 border-blue-500/55" style="box-shadow:0 0 22px rgba(30,64,175,.55);">
+            <span class="font-bebas text-2xl text-white">01</span>
+          </div>
+          <div class="glass rounded-2xl p-5 w-full phase-card">
+            <i class="fas fa-magnifying-glass text-blue-400 text-xl mb-3 block icon-glow"></i>
+            <h4 class="font-rajdhani font-bold text-white text-sm uppercase tracking-wider mb-2">Diagnóstico Digital</h4>
+            <p class="text-white/35 text-xs leading-relaxed">Inspección con medidor de espesor de pintura (micras) y análisis bajo luz de inspección profesional. Registro fotográfico completo del estado inicial.</p>
+          </div>
+        </div>
+
+        <div class="flex-1 flex flex-col items-center text-center px-3 relative z-10 reveal" style="transition-delay:.2s">
+          <div class="w-16 h-16 rounded-full flex items-center justify-center mb-6 bg-cobalt-dark border-2 border-blue-500/55" style="box-shadow:0 0 22px rgba(30,64,175,.55);">
+            <span class="font-bebas text-2xl text-white">02</span>
+          </div>
+          <div class="glass rounded-2xl p-5 w-full phase-card">
+            <i class="fas fa-flask text-blue-400 text-xl mb-3 block icon-glow"></i>
+            <h4 class="font-rajdhani font-bold text-white text-sm uppercase tracking-wider mb-2">Descontaminación</h4>
+            <p class="text-white/35 text-xs leading-relaxed">Descontaminación química con removedor ferroso y arcilla mecánica para eliminar toda partícula embebida en el clear coat antes de la corrección.</p>
+          </div>
+        </div>
+
+        <div class="flex-1 flex flex-col items-center text-center px-3 relative z-10 reveal" style="transition-delay:.3s">
+          <div class="w-16 h-16 rounded-full flex items-center justify-center mb-6 bg-cobalt-dark border-2 border-blue-500/55" style="box-shadow:0 0 22px rgba(30,64,175,.55);">
+            <span class="font-bebas text-2xl text-white">03</span>
+          </div>
+          <div class="glass rounded-2xl p-5 w-full phase-card">
+            <i class="fas fa-circle-nodes text-blue-400 text-xl mb-3 block icon-glow"></i>
+            <h4 class="font-rajdhani font-bold text-white text-sm uppercase tracking-wider mb-2">Corrección Multietapa</h4>
+            <p class="text-white/35 text-xs leading-relaxed">Corrección de pintura con máquinas rotativas y DA. Proceso de 1 a 3 etapas según nivel de daño del barniz hasta lograr el acabado espejo.</p>
+          </div>
+        </div>
+
+        <div class="flex-1 flex flex-col items-center text-center px-3 relative z-10 reveal" style="transition-delay:.4s">
+          <div class="w-16 h-16 rounded-full flex items-center justify-center mb-6 bg-cobalt-dark border-2 border-blue-500/55" style="box-shadow:0 0 22px rgba(30,64,175,.55);">
+            <span class="font-bebas text-2xl text-white">04</span>
+          </div>
+          <div class="glass rounded-2xl p-5 w-full phase-card">
+            <i class="fas fa-layer-group text-blue-400 text-xl mb-3 block icon-glow"></i>
+            <h4 class="font-rajdhani font-bold text-white text-sm uppercase tracking-wider mb-2">Protección Nano Cerámica</h4>
+            <p class="text-white/35 text-xs leading-relaxed">Aplicación de recubrimiento SiO₂ en cabina controlada de temperatura y humedad para garantizar máxima adhesión y vida útil del producto.</p>
+          </div>
+        </div>
+
+        <div class="flex-1 flex flex-col items-center text-center px-3 relative z-10 reveal" style="transition-delay:.5s">
+          <div class="w-16 h-16 rounded-full flex items-center justify-center mb-6 bg-cobalt-dark border-2 border-blue-500/55" style="box-shadow:0 0 22px rgba(30,64,175,.55);">
+            <span class="font-bebas text-2xl text-white">05</span>
+          </div>
+          <div class="glass rounded-2xl p-5 w-full phase-card">
+            <i class="fas fa-eye text-blue-400 text-xl mb-3 block icon-glow"></i>
+            <h4 class="font-rajdhani font-bold text-white text-sm uppercase tracking-wider mb-2">Control de Calidad</h4>
+            <p class="text-white/35 text-xs leading-relaxed">Inspección final bajo luces LED de alta intensidad. Verificación de espesor, test de hidrofobicidad y entrega con certificado de garantía.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile timeline -->
+      <div class="lg:hidden space-y-3">
+        <div class="flex gap-4 items-start reveal" style="transition-delay:.1s">
+          <div class="flex flex-col items-center flex-shrink-0">
+            <div class="w-11 h-11 rounded-full flex items-center justify-center bg-cobalt-dark border-2 border-blue-500/50 font-bebas text-base">01</div>
+            <div class="w-px flex-grow bg-gradient-to-b from-blue-800/50 to-transparent mt-1 min-h-[2rem]"></div>
+          </div>
+          <div class="glass rounded-xl p-4 flex-grow mb-2 phase-card">
+            <div class="flex items-center gap-2 mb-1">
+              <i class="fas fa-magnifying-glass text-blue-400 text-sm"></i>
+              <span class="font-rajdhani font-bold text-white text-xs uppercase tracking-wider">Fase 1: Diagnóstico Digital &amp; Inspección de Micras</span>
+            </div>
+            <p class="text-white/35 text-xs leading-relaxed">Medidor de espesor y análisis completo bajo luz de inspección profesional.</p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start reveal" style="transition-delay:.15s">
+          <div class="flex flex-col items-center flex-shrink-0">
+            <div class="w-11 h-11 rounded-full flex items-center justify-center bg-cobalt-dark border-2 border-blue-500/50 font-bebas text-base">02</div>
+            <div class="w-px flex-grow bg-gradient-to-b from-blue-800/50 to-transparent mt-1 min-h-[2rem]"></div>
+          </div>
+          <div class="glass rounded-xl p-4 flex-grow mb-2 phase-card">
+            <div class="flex items-center gap-2 mb-1">
+              <i class="fas fa-flask text-blue-400 text-sm"></i>
+              <span class="font-rajdhani font-bold text-white text-xs uppercase tracking-wider">Fase 2: Descontaminación Química y Mecánica</span>
+            </div>
+            <p class="text-white/35 text-xs leading-relaxed">Removedor ferroso y arcilla mecánica para limpiar el clear coat al máximo nivel.</p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start reveal" style="transition-delay:.2s">
+          <div class="flex flex-col items-center flex-shrink-0">
+            <div class="w-11 h-11 rounded-full flex items-center justify-center bg-cobalt-dark border-2 border-blue-500/50 font-bebas text-base">03</div>
+            <div class="w-px flex-grow bg-gradient-to-b from-blue-800/50 to-transparent mt-1 min-h-[2rem]"></div>
+          </div>
+          <div class="glass rounded-xl p-4 flex-grow mb-2 phase-card">
+            <div class="flex items-center gap-2 mb-1">
+              <i class="fas fa-circle-nodes text-blue-400 text-sm"></i>
+              <span class="font-rajdhani font-bold text-white text-xs uppercase tracking-wider">Fase 3: Corrección de Pintura Multietapa</span>
+            </div>
+            <p class="text-white/35 text-xs leading-relaxed">Corrección de 1 a 3 etapas con máquinas rotativas y DA. Acabado espejo.</p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start reveal" style="transition-delay:.25s">
+          <div class="flex flex-col items-center flex-shrink-0">
+            <div class="w-11 h-11 rounded-full flex items-center justify-center bg-cobalt-dark border-2 border-blue-500/50 font-bebas text-base">04</div>
+            <div class="w-px flex-grow bg-gradient-to-b from-blue-800/50 to-transparent mt-1 min-h-[2rem]"></div>
+          </div>
+          <div class="glass rounded-xl p-4 flex-grow mb-2 phase-card">
+            <div class="flex items-center gap-2 mb-1">
+              <i class="fas fa-layer-group text-blue-400 text-sm"></i>
+              <span class="font-rajdhani font-bold text-white text-xs uppercase tracking-wider">Fase 4: Aplicación de Protección Nano Cerámica</span>
+            </div>
+            <p class="text-white/35 text-xs leading-relaxed">Recubrimiento SiO₂ en condiciones controladas para máxima adherencia.</p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start reveal" style="transition-delay:.3s">
+          <div class="flex flex-col items-center flex-shrink-0">
+            <div class="w-11 h-11 rounded-full flex items-center justify-center bg-cobalt-dark border-2 border-blue-500/50 font-bebas text-base">05</div>
+          </div>
+          <div class="glass rounded-xl p-4 flex-grow mb-2 phase-card">
+            <div class="flex items-center gap-2 mb-1">
+              <i class="fas fa-eye text-blue-400 text-sm"></i>
+              <span class="font-rajdhani font-bold text-white text-xs uppercase tracking-wider">Fase 5: Control de Calidad bajo Luces de Inspección</span>
+            </div>
+            <p class="text-white/35 text-xs leading-relaxed">Inspección bajo LEDs de alta intensidad, test de hidrofobicidad y garantía documentada.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       TRUST BADGES
+  ══════════════════════════════════════════════════════════ -->
+  <div class="hr-blue opacity-30"></div>
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="text-center reveal" style="transition-delay:.1s">
+          <i class="fas fa-award text-3xl text-blue-400 mb-3 icon-glow"></i>
+          <div class="font-rajdhani font-bold text-white text-sm uppercase tracking-widest">Certificados</div>
+          <div class="text-white/30 text-xs mt-1">Detailers Profesionales</div>
+        </div>
+        <div class="text-center reveal" style="transition-delay:.2s">
+          <i class="fas fa-star text-3xl text-blue-400 mb-3 icon-glow"></i>
+          <div class="font-rajdhani font-bold text-white text-sm uppercase tracking-widest">5 Estrellas</div>
+          <div class="text-white/30 text-xs mt-1">Reputación Comprobada</div>
+        </div>
+        <div class="text-center reveal" style="transition-delay:.3s">
+          <i class="fas fa-clock text-3xl text-blue-400 mb-3 icon-glow"></i>
+          <div class="font-rajdhani font-bold text-white text-sm uppercase tracking-widest">Puntualidad</div>
+          <div class="text-white/30 text-xs mt-1">Entrega en Tiempo</div>
+        </div>
+        <div class="text-center reveal" style="transition-delay:.4s">
+          <i class="fas fa-file-signature text-3xl text-blue-400 mb-3 icon-glow"></i>
+          <div class="font-rajdhani font-bold text-white text-sm uppercase tracking-widest">Garantía</div>
+          <div class="text-white/30 text-xs mt-1">Documentada por Escrito</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       CONTACT & LOCATION
+  ══════════════════════════════════════════════════════════ -->
+  <div class="hr-blue opacity-30"></div>
+  <section id="contacto" class="py-24 relative overflow-hidden">
+    <div class="absolute inset-0 grid-bg opacity-20"></div>
+    <div class="absolute right-0 top-0 w-1/2 h-full pointer-events-none" style="background:radial-gradient(ellipse at 100% 50%,rgba(30,64,175,.07) 0%,transparent 55%);"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-16">
+        <div class="glass-blue inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 reveal">
+          <i class="fas fa-location-dot text-blue-400 text-xs"></i>
+          <span class="text-[10px] font-semibold text-blue-300 tracking-[3px] uppercase">Lambaré, Paraguay</span>
+        </div>
+        <h2 class="reveal font-bebas tracking-wider" style="font-size:clamp(2.6rem,8vw,5.5rem);transition-delay:.1s">
+          UBICACIÓN <span class="gradient-text">&amp; CONTACTO</span>
+        </h2>
+        <p class="reveal text-white/45 mt-4 text-lg max-w-lg mx-auto" style="transition-delay:.2s">
+          Visitanos en Lambaré o contactanos por WhatsApp para agendar tu turno.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-10 items-start">
+
+        <!-- Map -->
+        <div class="reveal reveal-l" style="transition-delay:.2s">
+          <a href="https://maps.app.goo.gl/SmEKzXLw3xzMutwm9" target="_blank" rel="noopener" class="block group">
+            <div class="relative rounded-2xl overflow-hidden border border-blue-900/40 group-hover:border-blue-600/55 transition-all duration-300" style="height:420px;">
+              <iframe
+                src="https://www.google.com/maps?q=Lambar%C3%A9,+Central+Department,+Paraguay&output=embed&z=14"
+                width="100%" height="100%"
+                style="border:0;filter:invert(90%) hue-rotate(185deg) saturate(0.35) brightness(0.75);"
+                allowfullscreen loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="JOB DetailStudio — Lambaré, Paraguay">
+              </iframe>
+              <div class="absolute inset-0 pointer-events-none" style="background:linear-gradient(to top,rgba(9,9,11,.88) 0%,transparent 35%);"></div>
+              <div class="absolute bottom-0 inset-x-0 p-5 flex items-center justify-between pointer-events-none">
+                <div>
+                  <div class="text-white font-semibold text-sm">JOB DetailStudio</div>
+                  <div class="text-white/45 text-xs flex items-center gap-1 mt-0.5">
+                    <i class="fas fa-location-dot text-blue-400 text-xs"></i>
+                    Lambaré, Departamento Central, Paraguay
+                  </div>
                 </div>
-                <p class="testimonial-text">"El nivel de detalle y profesionalismo es increíble. Me hice un diseño de sonrisa con carillas y el resultado superó todas mis expectativas. Un ambiente de primera."</p>
-                <div class="patient-name">Carlos M.</div>
-            </div>
-            <div class="testimonial-card reveal">
-                <div class="stars">
-                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <div class="glass-blue px-4 py-2 rounded-full text-blue-300 text-xs font-semibold tracking-wider group-hover:bg-blue-700/30 transition-all pointer-events-auto">
+                  <i class="fas fa-external-link text-xs mr-1"></i> Ver en Maps
                 </div>
-                <p class="testimonial-text">"Siempre le tuve miedo al dentista, pero aquí la experiencia fue totalmente distinta. Ni siquiera sentí la anestesia. Excelentes profesionales y tecnología."</p>
-                <div class="patient-name">Laura V.</div>
+              </div>
             </div>
-            <div class="testimonial-card reveal">
-                <div class="stars">
-                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                </div>
-                <p class="testimonial-text">"Terminé mi tratamiento de ortodoncia invisible y no puedo dejar de sonreír. El seguimiento del doctor fue impecable mes a mes. Totalmente recomendados."</p>
-                <div class="patient-name">Javier R.</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- UBICACIÓN Y MAPA -->
-    <section class="location section-padding" id="ubicacion">
-        <div class="text-center">
-            <h2 class="section-title reveal">Encuéntrenos</h2>
-            <p class="section-subtitle reveal">Visite nuestras modernas instalaciones en una de las zonas más accesibles de la ciudad.</p>
+          </a>
         </div>
 
-        <div class="location-container reveal">
-            <div class="location-info">
-                <h3>Contacto Directo</h3>
-                
-                <div class="info-item">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <div>
-                        <strong>Dirección</strong>
-                        <p>Av. Principal (Zona Céntrica)<br>Asunción, Paraguay</p>
-                    </div>
-                </div>
-                
-                <div class="info-item">
-                    <i class="fa-solid fa-phone"></i>
-                    <div>
-                        <strong>Teléfono / WhatsApp</strong>
-                        <p>+595 900 000 000</p>
-                    </div>
-                </div>
+        <!-- Contact info -->
+        <div class="space-y-5 reveal reveal-r" style="transition-delay:.3s">
 
-                <div class="info-item">
-                    <i class="fa-solid fa-clock"></i>
-                    <div>
-                        <strong>Horarios de Atención</strong>
-                        <p>Lunes a Viernes: 08:00 - 18:00<br>Sábados: 09:00 - 12:00</p>
-                    </div>
-                </div>
+          <div class="glass rounded-2xl p-5 border border-white/5 flex items-start gap-4">
+            <div class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(30,64,175,.14);">
+              <i class="fas fa-location-dot text-blue-400"></i>
             </div>
-            
-            <div class="map-wrapper">
-                <!-- Mapa de Google centrado en Asunción -->
-                <iframe class="map-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115293.07604342882!2d-57.71261559132207!3d-25.281895694218683!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945daea4cc8590bd%3A0x62804562095dc6c3!2sAsunci%C3%B3n%2C%20Paraguay!5e0!3m2!1ses!2s!4v1700000000000!5m2!1ses!2s" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div>
+              <div class="text-[9px] text-white/30 tracking-[2px] uppercase mb-0.5">Dirección</div>
+              <div class="text-white font-medium text-sm">Lambaré, Departamento Central</div>
+              <div class="text-white/45 text-xs">Paraguay</div>
             </div>
+          </div>
+
+          <div class="glass rounded-2xl p-5 border border-white/5 flex items-start gap-4">
+            <div class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(30,64,175,.14);">
+              <i class="fas fa-clock text-blue-400"></i>
+            </div>
+            <div>
+              <div class="text-[9px] text-white/30 tracking-[2px] uppercase mb-0.5">Horario de Atención</div>
+              <div class="text-white font-medium text-sm">Lunes a Viernes: 08:00 – 18:00 hs</div>
+              <div class="text-white/45 text-xs">Sábados: 08:00 – 13:00 hs</div>
+            </div>
+          </div>
+
+          <a href="https://wa.me/595971000000?text=Hola%20JOB%20DetailStudio!%20Quisiera%20consultar%20sobre%20sus%20servicios%20y%20agendar%20un%20turno."
+             target="_blank" rel="noopener"
+             class="wa-glow flex items-center gap-4 w-full py-5 px-6 rounded-2xl text-white font-semibold transition-all duration-300 hover:scale-[1.02]"
+             style="background:linear-gradient(135deg,#0d6f5c,#25d366);border:1px solid rgba(37,211,102,.3);">
+            <i class="fab fa-whatsapp text-3xl"></i>
+            <div>
+              <div class="font-bold text-base leading-tight">Escribinos por WhatsApp</div>
+              <div class="text-green-100/65 text-xs font-normal mt-0.5">Respuesta inmediata · Turnos disponibles</div>
+            </div>
+            <i class="fas fa-arrow-right ml-auto opacity-60"></i>
+          </a>
+
+          <a href="https://maps.app.goo.gl/SmEKzXLw3xzMutwm9"
+             target="_blank" rel="noopener"
+             class="flex items-center gap-4 w-full py-4 px-6 rounded-2xl text-white font-semibold transition-all duration-300 hover:scale-[1.02] glass border border-blue-900/40 hover:border-blue-700/55">
+            <i class="fas fa-map-location-dot text-blue-400 text-xl"></i>
+            <div>
+              <div class="font-semibold text-sm leading-tight">Ver Ubicación en Google Maps</div>
+              <div class="text-white/35 text-xs font-normal mt-0.5">Cómo llegar a JOB DetailStudio</div>
+            </div>
+            <i class="fas fa-external-link text-blue-400/50 ml-auto text-sm"></i>
+          </a>
+
+          <div class="glass rounded-2xl p-5 border border-white/5">
+            <div class="text-[9px] text-white/25 tracking-[2px] uppercase mb-3">Seguinos en redes</div>
+            <div class="flex gap-3">
+              <a href="#" class="w-10 h-10 rounded-xl flex items-center justify-center glass-blue hover:bg-blue-700/30 transition-all duration-300" aria-label="Instagram">
+                <i class="fab fa-instagram text-blue-300"></i>
+              </a>
+              <a href="#" class="w-10 h-10 rounded-xl flex items-center justify-center glass-blue hover:bg-blue-700/30 transition-all duration-300" aria-label="Facebook">
+                <i class="fab fa-facebook text-blue-300"></i>
+              </a>
+              <a href="#" class="w-10 h-10 rounded-xl flex items-center justify-center glass-blue hover:bg-blue-700/30 transition-all duration-300" aria-label="TikTok">
+                <i class="fab fa-tiktok text-blue-300"></i>
+              </a>
+              <a href="https://wa.me/595971000000" target="_blank" rel="noopener"
+                 class="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 hover:bg-green-700/30"
+                 style="background:rgba(37,211,102,.1);border:1px solid rgba(37,211,102,.2);" aria-label="WhatsApp">
+                <i class="fab fa-whatsapp text-green-400"></i>
+              </a>
+            </div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- FOOTER -->
-    <footer>
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h3>DENTAL<span>CLINIC</span></h3>
-                <p>Odontología de excelencia en Asunción. Cuidamos de su salud dental con un enfoque integral y personalizado, devolviendo la funcionalidad y estética a su sonrisa.</p>
-                <div class="social-links">
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h3>Enlaces Rápidos</h3>
-                <a href="#inicio">Inicio</a>
-                <a href="#nosotros">Nuestra Clínica</a>
-                <a href="#servicios">Tratamientos</a>
-                <a href="https://link-a-tu-blog.com" target="_blank">Leer nuestro Blog</a>
-            </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════════════════ -->
+  <footer class="relative border-t border-white/5 py-12">
+    <div class="absolute inset-0 grid-bg opacity-10 pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+
+        <a href="#inicio" class="flex items-center gap-3">
+          <img src="logo.jpeg" alt="JOB DetailStudio" class="h-10 w-10 rounded-full object-contain border border-blue-800/30">
+          <div>
+            <div class="font-bebas text-xl tracking-widest text-white leading-none">JOB DetailStudio</div>
+            <div class="text-[9px] text-white/25 tracking-[2px] uppercase mt-0.5">Lambaré, Paraguay</div>
+          </div>
+        </a>
+
+        <div class="flex flex-wrap justify-center gap-5 text-[10px] text-white/25 uppercase tracking-widest">
+          <a href="#inicio"      class="hover:text-white/60 transition-colors">Inicio</a>
+          <a href="#servicios"   class="hover:text-white/60 transition-colors">Servicios</a>
+          <a href="#metodologia" class="hover:text-white/60 transition-colors">Metodología</a>
+          <a href="#contacto"    class="hover:text-white/60 transition-colors">Contacto</a>
         </div>
-        <div class="copyright">
-            <p>&copy; 2026 Dental Clinic Asunción. Todos los derechos reservados. | Diseñado por Novatec</p>
+
+        <div class="text-center md:text-right">
+          <div class="text-[10px] text-white/20 uppercase tracking-widest">
+            Desarrollado por <span class="text-blue-400/65 font-semibold">NovaTec Engineering</span>
+          </div>
+          <div class="text-[10px] text-white/15 tracking-wider mt-0.5">
+            Atención al cliente: <span class="text-white/25">Pedro Acosta</span>
+          </div>
+          <div class="text-[9px] text-white/10 mt-0.5">
+            © 2025 JOB DetailStudio · Todos los derechos reservados
+          </div>
         </div>
-    </footer>
+      </div>
+    </div>
+  </footer>
 
-    <!-- BOTÓN WHATSAPP FLOTANTE -->
-    <a href="https://wa.me/595900000000?text=Hola,%20me%20gustaría%20recibir%20más%20información%20sobre%20los%20tratamientos" class="whatsapp-float" target="_blank">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
 
-    <!-- JAVASCRIPT -->
-    <script>
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
+  <!-- ══════════════════════════════════════════════════════════
+       FLOATING WHATSAPP BUTTON
+  ══════════════════════════════════════════════════════════ -->
+  <a href="https://wa.me/595971000000?text=Hola%20JOB%20DetailStudio!%20Quisiera%20consultar%20sobre%20sus%20servicios."
+     target="_blank" rel="noopener"
+     class="wa-glow fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform duration-300"
+     style="background:linear-gradient(135deg,#0d6f5c,#25d366);"
+     aria-label="Contactar por WhatsApp">
+    <i class="fab fa-whatsapp text-white text-2xl"></i>
+  </a>
 
-        const reveals = document.querySelectorAll('.reveal');
-        const revealOptions = {
-            threshold: 0.15,
-            rootMargin: "0px 0px -50px 0px"
-        };
 
-        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) {
-                    return;
-                } else {
-                    entry.target.classList.add('active');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, revealOptions);
+  <!-- ══════════════════════════════════════════════════════════
+       JAVASCRIPT
+  ══════════════════════════════════════════════════════════ -->
+  <script>
+    // ── Navbar scroll tint ────────────────────────────────────
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 60) {
+        navbar.style.background = 'rgba(9,9,11,.97)';
+        navbar.style.borderBottomColor = 'rgba(30,64,175,.22)';
+      } else {
+        navbar.style.background = 'rgba(9,9,11,.88)';
+        navbar.style.borderBottomColor = 'rgba(255,255,255,.06)';
+      }
+    }, { passive: true });
 
-        reveals.forEach(reveal => {
-            revealOnScroll.observe(reveal);
-        });
-    </script>
+    // ── Mobile menu ───────────────────────────────────────────
+    const menuBtn    = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon   = document.getElementById('menu-icon');
+    menuBtn.addEventListener('click', () => {
+      const open = mobileMenu.classList.toggle('open');
+      menuIcon.className = open ? 'fas fa-times text-xl' : 'fas fa-bars text-xl';
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      menuIcon.className = 'fas fa-bars text-xl';
+    }));
+
+    // ── Scroll reveal ─────────────────────────────────────────
+    const ro = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal, .reveal-l, .reveal-r').forEach(el => ro.observe(el));
+
+    // ── Before / After Comparison Slider ─────────────────────
+    (function () {
+      const wrap       = document.getElementById('cmp-wrap');
+      const beforeClip = document.getElementById('cmp-before-clip');
+      const line       = document.getElementById('cmp-line');
+      const handle     = document.getElementById('cmp-handle');
+      const lblB       = document.getElementById('lbl-before');
+      const lblA       = document.getElementById('lbl-after');
+      let dragging = false;
+
+      function move(clientX) {
+        const r = wrap.getBoundingClientRect();
+        const x = Math.max(2, Math.min(clientX - r.left, r.width - 2));
+        const pct = (x / r.width) * 100;
+        beforeClip.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
+        line.style.left   = pct + '%';
+        handle.style.left = pct + '%';
+        lblB.style.opacity = pct > 12 ? '1' : '0';
+        lblA.style.opacity = pct < 88 ? '1' : '0';
+      }
+
+      // Init at centre
+      function init() { move(wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width / 2); }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+
+      wrap.addEventListener('mousedown',  e => { dragging = true; move(e.clientX); });
+      document.addEventListener('mousemove', e => { if (dragging) move(e.clientX); });
+      document.addEventListener('mouseup',   () => { dragging = false; });
+
+      wrap.addEventListener('touchstart', e => { dragging = true; move(e.touches[0].clientX); }, { passive: true });
+      document.addEventListener('touchmove',  e => { if (dragging) move(e.touches[0].clientX); }, { passive: true });
+      document.addEventListener('touchend',   () => { dragging = false; });
+
+      window.addEventListener('resize', init, { passive: true });
+    })();
+  </script>
+
 </body>
 </html>
